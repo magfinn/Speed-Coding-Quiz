@@ -1,5 +1,6 @@
 <h1 align="center">✨Speedy Code-Zales✨</h1>
-![Gif - Roadrunner](/public/assets/speedy.gif?raw=true)
+
+![RoadRunner gif](https://media.giphy.com/media/yhRhIgnJIRD0I/giphy.gif)
 
 <p>
 <a href="https://opensource.org/licenses/MIT">
@@ -14,7 +15,7 @@ Welcome to the
       on the
       clock. Good luck!
 
-🔗 <a href = 'https://magfinn.github.io/Speedy-Code-Zales//'>Link</a>
+🔗 <a href = 'https://magfinn.github.io/speedy-code-zales/'>Link</a>
 
 ## ✅ Installing / Getting Started
 
@@ -28,13 +29,13 @@ Welcome to the
 - Bootstrap
 
 To use, clone the repo:
-`git clone git@github.com/magfinn/SpeedyCode-Zales`
+`git clone git@github.com/magfinn/speedy-con-zales`
 
 Start your server:
 `npm start`
 
 # Demos:
-Link: https://magfinn.github.io/Speedy-Code-Zales/
+Link: https://magfinn.github.io/speedy-con-zales/
 
 ![Screenshot of Quiz](/public/assets/screenshot.png?raw=true)
 
