@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Speedy Code-Zales</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"
+    integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma-rtl.css"
+    integrity="sha512-lRrLGKpDJnz2o4GiW8kQ+5ugePN6VGOquzU+nLqJaYPJ3XBk2FXldC+EhHBJVKuO93Ac4sEua9g+VMfWtNcI4Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./assets/css/stylesheet.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="nav-bar item" id="headerlink" href="#">
+          <h1 class="navbar-brand">Speedy Code-Zales</h1>
+        </a>
+      </div>
+      <div class="nav-bar item">
+        <a class="nav-bar item" href="./high-score.html">
+          <h3>View High Scores</h3>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div id="timeLeft"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card is-parent">
+      <div class="card is-child">
+        <div class="card-header">
+              <h1 class="text-center">Speed Coding Challenge</h1>
+        </div>
+        <div class="card-content" id="quizarea">
+            <p>
+              Welcome to the
+              Speed Coding Challenge where you have 60 seconds to answer 5 questions. Answer correctly and you move along to the
+              next. Incorrect answers cost you <b>10 seconds</b>! At the end of the quiz, your score is the time remaining
+              on the
+              clock.
+              <br>
+            <h3 id="emphasis">Good luck!</h3>
+            </span><br></br>
+            </p>
+        </div>
+    <p id="question"></p>
+    <ul class="choice-listing" id="choiceslisting"></ul>
+    <div class="card-footer">
+        <button type="button" id="startquiz">Start Quiz</button>
+    </div>
+  </div>
+  </div>
+  </section>
+</body>
+
+
+<!-- Added link to the jQuery library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!--Javascript file -->
+<script src="./assets/js/script.js"></script>
+
+</html>
