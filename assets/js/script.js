@@ -46,12 +46,12 @@ startQuiz.addEventListener("click", function () {
     if (holdInterval === 0) {
         holdInterval = setInterval(function () {
             timeLeft--;
-            timeLeft.textContent = timeLeft + 'second(s) left';
+            timeLeftDiv.textContent = timeLeft + ' second(s) left';
 
             if (timeLeft <= 0) {
                 clearInterval(holdInterval);
                 endQuiz();
-                timeLeft.textContent = "Time's up!";
+                timeLeftDiv.textContent = "Time's up!";
             }
         }, 1000);
     }
@@ -76,8 +76,9 @@ function renderQuestion(currentQuestion) {
     quizChoices.forEach(function (newItem) {
         var choiceItem = document.createElement("li");
         choiceItem.textContent = newItem;
-        choiceItem.setAttribute("id", "listyle");
+        choiceItem.setAttribute("id", "liststyle");
         questionText.textContent = quizQuestion;
+        questionText.setAttribute('class', 'question-text');
         quizArea.appendChild(questionText);
         quizArea.appendChild(ulCreate);
         ulCreate.appendChild(choiceItem);

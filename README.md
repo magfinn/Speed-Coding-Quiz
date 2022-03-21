@@ -36,7 +36,7 @@ Start your server:
 # Demos:
 Link: https://magfinn.github.io/Speedy-Code-Zales/
 
-![Screenshot of Quiz](/public/assets/speedy.gif?raw=true)
+![Screenshot of Quiz](/public/assets/screenshot.png?raw=true)
 
 
 ## 🚥 Tests
