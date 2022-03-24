@@ -1,170 +1,148 @@
-// set up variables with array/objects for questions:
 let questions = [
     {
         question: "Who created one of the first computer languages?",
-        choices: ["Albus Dumbledore", "Marie Curie", "Ada Lovelace", "Richard Branson"],
+        answers: ["Albus Dumbledore", "Marie Curie", "Ada Lovelace", "Richard Branson"],
         answer: "Ada Lovelace",
     },
     {
         question: "How many parts make up the grid layout for Bootstrap?",
-        choices: ["10", "12", "3", "21"],
+        answers: ["10", "12", "3", "21"],
         answer: "12",
     },
     {
         question: "How do you comment out HTML?",
-        choices: ["#", "//", "<---->", "(comment)"],
+        answers: ["#", "//", "<---->", "(comment)"],
         answer: "<---->",
     },
     {
         question: "How do you code 'x is not equal to y' in javascript?",
-        choices: ["x,y = 'null'", "x===y", "x!==y", "none of the above",],
+        answers: ["x,y = 'null'", "x===y", "x!==y", "none of the above",],
         answer: "x!==y",
     },
     {
         question: "How do you exit a for loop in javascript?",
-        choices: ["forNope", "stop", "exit", "break"],
+        answers: ["forNope", "stop", "exit", "break"],
         answer: "break",
     }
 ];
-// set up variables
-var score = 0;
+
 var currentQuestion = 0;
+let answers = [];
 
 var timeLeftDiv = document.querySelector("#timeLeft");
-var startQuiz = document.querySelector("#startquiz");
+var resultsDiv = document.querySelector('#resultsDiv');
+var startBtn = document.querySelector("#start-btn");
 var quizArea = document.querySelector("#quizarea");
 var questionText = document.querySelector('#question');
 var cardFooter = document.querySelector('.card-footer');
 
 var timeLeft = 60;
-var holdInterval = 0;
-var ulCreate = document.createElement("ul");
 
-//start quiz when start button is clicked
-startQuiz.addEventListener("click", function () {
+function setTimer() {
+    let timer = setInterval(function () {
+        timeLeftDiv.textContent = timeLeft + ' second(s) left';
+        timeLeft -= 1;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            endQuiz();
+        }
+    }, 1000);
+};
 
-    if (holdInterval === 0) {
-        holdInterval = setInterval(function () {
-            timeLeft--;
-            timeLeftDiv.textContent = timeLeft + ' second(s) left';
+function beginQuiz() {
+    let welcomeText = document.querySelector('#welcome');
+    let emphasis = document.querySelector('#emphasis');
+    welcomeText.innerHTML = '';
+    emphasis.innerHTML = '';
+    startBtn.style.display = 'none';
+    renderQuestion(questions[currentQuestion]);
+}
 
-            if (timeLeft <= 0) {
-                clearInterval(holdInterval);
-                endQuiz();
-                timeLeftDiv.textContent = "Time's up!";
-            }
-        }, 1000);
-    }
 
-    renderQuestion(currentQuestion);
-});
+function renderQuestion() {
 
-//begin for-loop to display questions and options
-function renderQuestion(currentQuestion) {
+    let question = questions[currentQuestion].question;
+    let questionText = document.createElement('h3');
 
-    cardFooter.innerHTML = ''
-    quizArea.innerHTML = "";
-    ulCreate.innerHTML = "";
-    questionText.innerHTML = '';
+    questionText.textContent = question;
+    quizArea.append(questionText);
 
-    for (var i = 0; i < questions.length; i++) {
+    questions[currentQuestion].answers.forEach((answer) => {
+        let answerBtn = document.createElement('button');
+        answerBtn.textContent = answer
+        answerBtn.setAttribute('value', answer)
+        let choiceList = document.createElement('ul');
+        choiceList.append(answerBtn);
+        quizArea.append(choiceList);
 
-        var quizQuestion = questions[currentQuestion].question;
-        var quizChoices = questions[currentQuestion].choices;
-    }
-
-    quizChoices.forEach(function (newItem) {
-        var choiceItem = document.createElement("li");
-        choiceItem.textContent = newItem;
-        choiceItem.setAttribute("id", "liststyle");
-        questionText.textContent = quizQuestion;
-        questionText.setAttribute('class', 'question-text');
-        quizArea.appendChild(questionText);
-        quizArea.appendChild(ulCreate);
-        ulCreate.appendChild(choiceItem);
-        choiceItem.addEventListener("click", (validateAnswer));
+        answerBtn.addEventListener('click', validateAnswer)
     })
 }
 
-//validate the answer
 function validateAnswer(event) {
-    var element = event.target;
-    if (element.matches("li")) {
-        if (element.textContent == questions[currentQuestion].answer) {
-            score++;
-            cardFooter.textContent = "Correct!";
-        } else {
-            timeLeft = timeLeft - 10;
-            cardFooter.textContent = "Try Again!";
-            return;
-        }
-    }
-    currentQuestion++;
-
-    if (currentQuestion >= questions.length) {
-        endQuiz();
+    if (event.target.value === questions[currentQuestion].answer) {
+        cardFooter.innerHTML = 'Correct!';
+        currentQuestion++
     } else {
-        renderQuestion(currentQuestion);
+        timeLeft = timeLeft - 10;
+        if (timeLeft <= 0) {
+            endQuiz();
+        }
+        cardFooter.innerHTML = 'Try Again!'
+        timeLeftDiv.innerHTML = timeLeft + 'second(s) left'
+        return;
     }
-    quizArea.appendChild(cardFooter);
-}
+    if (currentQuestion < questions.length) {
+        renderQuestion(questions[currentQuestion]);
+    } else {
+        endQuiz();
 
-//once quiz has ended
+    }
+};
+
 function endQuiz() {
     quizArea.innerHTML = "";
     timeLeft.innerHTML = "";
+    let score = timeLeft;
+    let logScoreMessage = document.createElement('p');
+    logScoreMessage.innerHTML = 'Great Job! Enter your initials to log your score!';
+    cardFooter.innerHTML = 'Your score is ' + score;
+    quizArea.append(logScoreMessage);
+    quizArea.append(cardFooter);
 
-    //notify
-    var endNotification = document.createElement("h1");
-    endNotification.setAttribute("id", "endNotification");
-    endNotification.textContent = "Great Job! Don't forget to log your score!"
-    quizArea.appendChild(endNotification);
-    var endMessage = document.createElement("p");
-    endMessage.setAttribute("id", "endMessage");
-    quizArea.appendChild(endMessage);
-    if (timeLeft >= 0) {
-        clearInterval(holdInterval);
-        endMessage.textContent = "Your final score is: " + timeLeft;
-    }
+    let userDiv = document.createElement('div');
+    quizArea.append(userDiv);
 
-    //log initials
-    var logInitials = document.createElement("label");
-    logInitials.textContent = "Enter your initials: ";
-    quizArea.appendChild(logInitials);
-    var initialsInput = document.createElement("input");
-    initialsInput.setAttribute("type", "text");
-    initialsInput.setAttribute("id", "initials");
-    initialsInput.textContent = "";
-    quizArea.appendChild(initialsInput);
+    let userInput = document.createElement('input');
+    userInput.setAttribute('label', 'Enter your initials');
+    userDiv.append(userInput);
 
-    //submit score
-    var submitScoreBtn = document.createElement("button");
-    submitScoreBtn.setAttribute("type", "submit");
-    submitScoreBtn.setAttribute("id", "submit");
-    submitScoreBtn.textContent = "Submit";
-    quizArea.appendChild(submitScoreBtn);
-
-    //save to local storage
-    submitScoreBtn.addEventListener("click", function () {
-        var initials = initialsInput.value;
-        var finalScore = {
-            initials: initials,
-            score: timeLeft
+    let saveBtn = document.createElement('button');
+    saveBtn.innerHTML = 'Submit';
+    saveBtn.setAttribute('type', 'submit');
+    userDiv.append(saveBtn);
+    saveBtn.addEventListener('click', function () {
+        let username = userInput.value;
+        console.log(username);
+        let score = timeLeft;
+        let savedScore = {
+            user: username,
+            score: score
         }
 
-        // get all scores from local storage
-        var allScores = localStorage.getItem("allScores");
-        if (allScores === null) {
-            allScores = [];
+        let highscores = localStorage.getItem('highscores');
+        if (!highscores) {
+            highscores = [];
         } else {
-            allScores = JSON.parse(allScores);
+            highscores = JSON.parse(highscores);
         }
-        allScores.push(finalScore);
-        var newScore = JSON.stringify(allScores);
-        localStorage.setItem("allScores", newScore);
 
-        //redirect to scoreboard
-        window.location.replace("./highscore.html");
-    });
+        highscores.push(savedScore);
+        let scoreboard = JSON.stringify(highscores);
+        localStorage.setItem('highscores', scoreboard);
+        window.location.replace('./highscore.html');
+    })
 
 };
+
+startBtn.addEventListener('click', beginQuiz);

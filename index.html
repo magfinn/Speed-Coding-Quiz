@@ -6,10 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Speedy Code-Zales</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"
-    integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma-rtl.css"
     integrity="sha512-lRrLGKpDJnz2o4GiW8kQ+5ugePN6VGOquzU+nLqJaYPJ3XBk2FXldC+EhHBJVKuO93Ac4sEua9g+VMfWtNcI4Q=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -39,7 +35,7 @@
             <div id="timeLeft"></div>
         </div>
         <div class="card-content" id="quizarea">
-            <p class="largeText">
+            <p class="largeText" id='welcome'>
               Welcome to the
               Speed Coding Challenge where you have 60 seconds to answer 5 questions. Answer correctly and you move along to the
               next. Incorrect answers cost you <b>10 seconds</b>! At the end of the quiz, your score is the time remaining
@@ -49,11 +45,11 @@
             <h3 id="emphasis">Good luck!</h3>
             </span><br></br>
             </p>
-            <button type="button" id="startquiz">Start Quiz</button>
+            <button type="button" id="start-btn">Start Quiz</button>
         </div>
     <p id="question"></p>
     <ul class="choice-listing" id="choiceslisting"></ul>
-    <div class="card-footer">
+    <div id= 'resultsDiv' class="card-footer">
     </div>
   </div>
   </div>
