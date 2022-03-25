@@ -105,8 +105,8 @@ function endQuiz() {
     timeLeft.innerHTML = "";
     let score = timeLeft;
     let logScoreMessage = document.createElement('p');
-    logScoreMessage.innerHTML = 'Great Job! Enter your initials to log your score!';
-    cardFooter.innerHTML = 'Your score is ' + score;
+    logScoreMessage.innerHTML = 'Great Job! You scored' + score + 'points!';
+    cardFooter.innerHTML = 'Enter your initials to log your score!'
     quizArea.append(logScoreMessage);
     quizArea.append(cardFooter);
 
@@ -140,7 +140,7 @@ function endQuiz() {
         highscores.push(savedScore);
         let scoreboard = JSON.stringify(highscores);
         localStorage.setItem('highscores', scoreboard);
-        window.location.replace('./highscore.html');
+        window.location.replace('./scoreboard.html');
     })
 
 };

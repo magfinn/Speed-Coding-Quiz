@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma-rtl.css"
+        integrity="sha512-lRrLGKpDJnz2o4GiW8kQ+5ugePN6VGOquzU+nLqJaYPJ3XBk2FXldC+EhHBJVKuO93Ac4sEua9g+VMfWtNcI4Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/stylesheet.css">
+</head>
+
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <h1>Speedy Code-Zales</h1>
+                <h3 class="navbar-brand">The One Minute Challenge</h3>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="card is-parent">
+            <h1 class="card-header is-bold">Saved Scores</h1>
+            <ul class="card-content" id="scoreUl">
+                <!-- add content dynamically in scoreboard.js -->
+            </ul>
+            <div class="card-footer is-align-content-center is-align-content-space-around">
+                <button id="return" class="btn primary">Return</button>
+                <button id="clear" class="btn primary">Clear Scores</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Added link to the jQuery library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="./assets/js/scoreboard.js"></script>
+</body>
+
+</html>
