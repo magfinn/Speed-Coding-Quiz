@@ -35,9 +35,9 @@ Start your server:
 `npm start`
 
 # Demos:
-Link: https://magfinn.github.io/speedy-con-zales/
+Link: https://magfinn.github.io/speedy-code-zales/
 
-![Screenshot of Quiz](/public/assets/screenshot.png?raw=true)
+![Screenshot of Quiz](/assets/screenshot.png?raw=true)
 
 
 ## 🚥 Tests
